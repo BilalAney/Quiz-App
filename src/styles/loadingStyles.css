@@ -1,0 +1,40 @@
+/** @format */
+
+.loading-stack {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.circle {
+  height: 16px;
+  width: 16px;
+  border-radius: 8px;
+  padding: 0;
+  animation: loading;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  position: relative;
+}
+
+.loading-stack span:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+
+@keyframes loading {
+  0% {
+    bottom: 0px;
+  }
+  25% {
+    bottom: 4px;
+  }
+  50% {
+    bottom: 6px;
+  }
+  75% {
+    bottom: 4px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}

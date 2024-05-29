@@ -1,0 +1,78 @@
+/** @format */
+
+.question--container {
+  height: 100%;
+  width: inherit;
+  /* display: flex;
+  flex-direction: column; */
+  display: grid;
+  grid-template-rows: auto auto 1fr 1fr;
+  gap: 25px;
+  justify-content: start;
+}
+
+.question--container:nth-child(2) {
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+.question--container:nth-child(3) {
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+
+.question--container ol {
+  align-items: start;
+  list-style-type: upper-latin;
+  list-style-position: inside;
+  grid-row: 3;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  row-gap: 10%;
+  height: inherit;
+}
+
+.question--container button {
+  display: block;
+  width: min-content;
+  align-self: center;
+  justify-self: end;
+  /* margin-top: 1.5rem; */
+  grid-row: 4;
+  /* margin-top: 40px; */
+}
+
+.option--item {
+  transition: all 0.25s;
+}
+
+.option--item:hover {
+  background-color: #423042;
+  color: #fff;
+  margin-left: 12px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px 0.5 black;
+}
+
+.option--item.wrong,
+.option--item.correct {
+  cursor: not-allowed;
+}
+
+.option--item.wrong {
+  background-color: lightcoral;
+}
+
+.option--item.correct {
+  background-color: lightgreen;
+}
+
+.option--item.selected {
+  margin-left: 14px;
+}
+
+.question--btns--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
