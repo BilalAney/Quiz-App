@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 import { useEffect } from "react";
-import { useQuestionsContext } from "../contexts/questionsContext";
 
-function Timer({ startMins, startSecs }) {
+function Timer({ startMins, startSecs, whenFinished }) {
   const convertToCount = startMins * 60 + startSecs;
   const [counter, setCounter] = useState(convertToCount);
-  const { timerFinish } = useQuestionsContext();
 
-  if (counter === 0) timerFinish();
+  if (counter === 0) whenFinished();
 
   useEffect(() => {
     const timerId = setInterval(() => setCounter((pre) => pre - 1), 1000);

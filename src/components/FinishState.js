@@ -1,11 +1,21 @@
 /** @format */
 
-function FinishState({ points, userPoints, highestMark, handleClick, reason }) {
+import { useQuestionsContext } from "../contexts/questionsContext";
+
+function FinishState() {
   const styles = {
     display: "flex",
     flexDirection: "column",
     gap: "14px",
   };
+
+  const { questions, points, highestMark, progress, startQuiz } =
+    useQuestionsContext();
+
+  const totalPoints = questions.reduce((acc, cur) => cur.points + acc, 0);
+
+  const reason =
+    progress === questions.length - 1 ? "quiz_complete" : "time_finished";
 
   return (
     <div style={styles}>
@@ -15,10 +25,10 @@ function FinishState({ points, userPoints, highestMark, handleClick, reason }) {
           : "Time finished up!"}
       </h2>
       <h3>
-        You got {userPoints} {userPoints > points / 2 ? "🎉🎈" : "💔"}{" "}
+        You got {points} {points > totalPoints / 2 ? "🎉🎈" : "💔"}{" "}
       </h3>
       <h3>Highest mark: {highestMark}</h3>
-      <button onClick={handleClick}>Retake the quiz!</button>
+      <button onClick={startQuiz}>Retake the quiz!</button>
     </div>
   );
 }

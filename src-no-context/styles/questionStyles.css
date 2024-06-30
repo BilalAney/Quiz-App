@@ -76,15 +76,3 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
-/* { status, questions, progress, isSelected, points, highestMark, answers  */
-
-/* points={totalPoints}
-            userPoints={points}
-            highestMark={highestMark}
-            reason={
-              progress === questions.length - 1
-                ? "quiz_complete"
-                : "time_finished"
-            }
-            handleClick={() => dispatch({ type: "start_quiz" })} */

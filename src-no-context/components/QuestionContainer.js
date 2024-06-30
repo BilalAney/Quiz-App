@@ -2,23 +2,16 @@
 
 import { memo } from "react";
 import "../styles/questionStyles.css";
-import { useQuestionsContext } from "../contexts/questionsContext";
-function QuestionContainer({ children }) {
-  const {
-    isSelected,
-    progress,
-    questions,
-    answers,
-    handleSelect,
-    nextProgress: handleNext,
-    previousProgress: handleBack,
-    deselectAnswer: handleDeselect,
-  } = useQuestionsContext();
-
-  const questionData = questions[progress];
-
-  const selectedIndex = answers[progress];
-
+function QuestionContainer({
+  children,
+  questionData,
+  handleSelect,
+  handleNext,
+  handleBack,
+  handleDeselect,
+  selectedIndex,
+  isSelected,
+}) {
   const answerElements = questionData.options.map((ele, ind) => (
     <OptionItem
       isCorrect={questionData.correctOption === ind}
@@ -36,7 +29,7 @@ function QuestionContainer({ children }) {
       <h2>{questionData.question}</h2>
       <ol>{answerElements}</ol>
       <div className="question--btns--container">
-        {progress !== 0 && <button onClick={handleBack}>Previous</button>}
+        {handleBack && <button onClick={handleBack}>Previous</button>}
         {isSelected && (
           <>
             <button onClick={handleDeselect}>Deselect</button>
@@ -48,9 +41,13 @@ function QuestionContainer({ children }) {
   );
 }
 
-function OptionItem({ children, handleSelect, isCorrect, isChose }) {
-  const { isSelected } = useQuestionsContext();
-
+function OptionItem({
+  children,
+  handleSelect,
+  isCorrect,
+  isSelected,
+  isChose,
+}) {
   const styles = {
     width: "100%",
     height: "max-content",
